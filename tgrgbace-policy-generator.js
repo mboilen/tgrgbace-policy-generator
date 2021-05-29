@@ -22,8 +22,11 @@ let streamerPolicyBase64 = base64url(Buffer.from(streamerPolicy, 'utf8'));
 let viewerPolicyBase64 = base64url(Buffer.from(viewerPolicy, 'utf8'));
 
 makeAndLogPolicy('webrtc', HMAC_KEY, 'ws://' + HOSTNAME + ":3333/tgrgbace/stream", viewerPolicyBase64);
+makeAndLogPolicy('webrtc', HMAC_KEY, 'wss://' + HOSTNAME + ":3334/tgrgbace/stream", viewerPolicyBase64);
 makeAndLogPolicy('hls', HMAC_KEY, 'http://' + HOSTNAME + ":8080/tgrgbace/stream/playlist.m3u8", viewerPolicyBase64);
+makeAndLogPolicy('hls', HMAC_KEY, 'https://' + HOSTNAME + ":8090/tgrgbace/stream/playlist.m3u8", viewerPolicyBase64);
 makeAndLogPolicy('dash-ll', HMAC_KEY, 'http://' + HOSTNAME + ":8080/tgrgbace/stream/manifest_ll.mpd", viewerPolicyBase64);
+makeAndLogPolicy('dash-ll', HMAC_KEY, 'https://' + HOSTNAME + ":8090/tgrgbace/stream/manifest_ll.mpd", viewerPolicyBase64);
 
 makeAndLogPolicy('rtmp', HMAC_KEY, 'rtmp://' + HOSTNAME + ":1935/tgrgbace/stream/", streamerPolicyBase64);
 
