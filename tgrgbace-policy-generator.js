@@ -28,16 +28,23 @@ makeAndLogPolicy('hls', HMAC_KEY, 'https://' + HOSTNAME + ":8090/tgrgbace/stream
 makeAndLogPolicy('dash-ll', HMAC_KEY, 'http://' + HOSTNAME + ":8080/tgrgbace/stream/manifest_ll.mpd", viewerPolicyBase64);
 makeAndLogPolicy('dash-ll', HMAC_KEY, 'https://' + HOSTNAME + ":8090/tgrgbace/stream/manifest_ll.mpd", viewerPolicyBase64);
 
-makeAndLogPolicy('rtmp', HMAC_KEY, 'rtmp://' + HOSTNAME + ":1935/tgrgbace/stream/", streamerPolicyBase64);
+makeAndLogPolicy('rtmp', HMAC_KEY, 'rtmp://' + HOSTNAME + ":1935/tgrgbace/stream", streamerPolicyBase64);
+makeAndLogPolicy('srt', HMAC_KEY, 'srt://' + HOSTNAME + ":9999/tgrgbace/stream", streamerPolicyBase64);
 
 
 function makeAndLogPolicy(protocol, hmacKey, baseUrl, policyBase64) {
     var policyUrl = baseUrl + '?policy=' + policyBase64;
     var signature = base64url(crypto.createHmac('sha1', hmacKey).update(policyUrl).digest());
     var signedUrl = policyUrl + '&signature=' + signature;
-    console.log('Protocol: ' + protocol);
-    console.log('Url: ' + signedUrl);
-    console.log();
+    //srt is real special
+    if (protocol == "srt") {
+        console.log('Protocol: ' + protocol);
+        console.log('Url: ' + "srt://" + HOSTNAME + ":9999?streamid=" + encodeURIComponent(signedUrl));
+    } else {
+        console.log('Protocol: ' + protocol);
+        console.log('Url: ' + signedUrl);
+        console.log();
+    }
 }
 
 
