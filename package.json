@@ -1,0 +1,25 @@
+{
+  "name": "tgrgbace-policy-generator",
+  "version": "1.0.0",
+  "description": "Generate OvenMediaEngine policies for TGRGBACE",
+  "main": "tgrgbace-policy-generator.js",
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "crypto-js": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mboilen/tgrgbace-policy-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mboilen/tgrgbace-policy-generator/issues"
+  },
+  "homepage": "https://github.com/mboilen/tgrgbace-policy-generator#readme"
+}
