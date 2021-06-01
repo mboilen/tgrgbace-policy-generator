@@ -69,11 +69,6 @@ var sourcesObject = Object.entries(policies).map(function([key, value]) {
 var sourcesString = JSON.stringify(sourcesObject); 
 var sourcesKey = crypto.randomBytes(16).toString('hex');
 var encrypted = CryptoJS.AES.encrypt(sourcesString, sourcesKey).toString();
-//var sourcesJs = 
-    //'function getSources(key) {\n' +
-    //'\tvar str = CryptoJS.AES.decrypt(\'' + encrypted + '\', key).toString(CryptoJS.enc.Utf8);\n' +
-    //'\treturn JSON.parse(str);\n'+
-    //'}\n';
 var sourcesJs = 
     'function getSourcesString() {\n' +
 	'\treturn \'' + encrypted + '\';\n' + 
